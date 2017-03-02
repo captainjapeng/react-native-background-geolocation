@@ -98,7 +98,7 @@ public class Destination implements Parcelable {
      * @param destination  The new Destination that you want to evaluate
      * @param location  The new Location that you want to evaluate
      */
-    public static double containsLocation(Destination destination BackgroundLocation location) {
+    public static double containsLocation(Destination destination, BackgroundLocation location) {
       double R = 6371000.0;
       double x = (location.getLongitude() - destination.getLongitude()) * Math.cos((destination.getLatitude() + location.getLatitude()) / 2);
       double y = (location.getLatitude() - destination.getLatitude());

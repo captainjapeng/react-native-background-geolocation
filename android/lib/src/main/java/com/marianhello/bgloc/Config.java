@@ -337,6 +337,10 @@ public class Config implements Parcelable
     public Integer getDestination() {
         return destination;
     }
+    
+    public Integer hasDestination() {
+        return destination != null;
+    }
 
     public void setDestination(Destination destination) {
         this.destination = destination;

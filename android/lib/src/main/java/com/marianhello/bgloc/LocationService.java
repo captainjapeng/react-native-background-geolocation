@@ -37,6 +37,7 @@ import android.support.v4.app.NotificationCompat;
 import com.marianhello.bgloc.data.BackgroundLocation;
 import com.marianhello.bgloc.data.ConfigurationDAO;
 import com.marianhello.bgloc.data.DAOFactory;
+import com.marianhello.bgloc.data.Destination;
 import com.marianhello.bgloc.data.LocationDAO;
 import com.marianhello.bgloc.sync.AccountHelper;
 import com.marianhello.bgloc.sync.AuthenticatorService;
@@ -346,6 +347,11 @@ public class LocationService extends Service {
         msg.setData(bundle);
 
         sendClientMessage(msg);
+        
+        // Check if the location is inside the destination
+        if (config.hasDestination() && Destination.containsLocation(config.getDestination, location)) {
+            stopSelf();
+        }
     }
 
     public void handleStationary(BackgroundLocation location) {
