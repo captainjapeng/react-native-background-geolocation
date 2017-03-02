@@ -251,6 +251,14 @@ public class BackgroundGeolocationModule extends ReactContextBaseJavaModule impl
 
             config.setHttpHeaders(httpHeaders);
         }
+        if (options.hasKey("destination")) {
+            Destination destination = new Destination()
+            ReadableMap rm = options.getMap("destination");
+            destination.setLatitude(rm.getDouble("latitude"));
+            destination.setLongitude(rm.getDouble("longitude"));
+            destination.setRadius(rm.getDouble("radius"));
+            config.setDestination(destination);
+        }
 
         try {
             persistConfiguration(config);

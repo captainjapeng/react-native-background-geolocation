@@ -1,7 +1,7 @@
 {
   "name": "react-native-mauron85-background-geolocation",
   "version": "0.2.0-alpha.6",
-  "description": "optimized background location tracking",
+  "description": "optimized background location tracking with the ability to set destination",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -21,6 +21,7 @@
     "react-native",
     "react-component",
     "android",
+    "destination"
     "ios"
   ],
   "author": "Marian Hello",
