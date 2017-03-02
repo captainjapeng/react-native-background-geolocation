@@ -129,7 +129,7 @@ public class Config implements Parcelable
         setSyncUrl(in.readString());
         setSyncThreshold(in.readInt());
         setMaxLocations(in.readInt());
-        setDestination(in.readParcelable(Destination.class.getClassLoaded()));
+        setDestination((Destination) in.readParcelable(Destination.class.getClassLoader()));
         Bundle bundle = in.readBundle();
         setHttpHeaders((HashMap<String, String>) bundle.getSerializable("httpHeaders"));
     }
@@ -334,11 +334,11 @@ public class Config implements Parcelable
         this.maxLocations = maxLocations;
     }
 
-    public Integer getDestination() {
+    public Destination getDestination() {
         return destination;
     }
     
-    public Integer hasDestination() {
+    public boolean hasDestination() {
         return destination != null;
     }
 
@@ -383,7 +383,7 @@ public class Config implements Parcelable
                 .append(" syncThreshold=").append(getSyncThreshold())
                 .append(" httpHeaders=").append(getHttpHeaders().toString())
                 .append(" maxLocations=").append(getMaxLocations())
-                .append(" destination=").append(getDestination().toString())
+                .append(" destination=").append(getDestination() != null ? getDesiredAccuracy.toString() : "")
                 .append("]")
                 .toString();
     }

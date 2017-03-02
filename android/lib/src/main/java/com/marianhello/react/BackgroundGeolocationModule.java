@@ -35,6 +35,7 @@ import com.marianhello.bgloc.LocationService;
 import com.marianhello.bgloc.data.BackgroundLocation;
 import com.marianhello.bgloc.data.ConfigurationDAO;
 import com.marianhello.bgloc.data.DAOFactory;
+import com.marianhello.bgloc.data.Destination;
 import com.marianhello.bgloc.data.LocationDAO;
 import com.marianhello.logging.DBLogReader;
 import com.marianhello.logging.LogEntry;
@@ -252,7 +253,7 @@ public class BackgroundGeolocationModule extends ReactContextBaseJavaModule impl
             config.setHttpHeaders(httpHeaders);
         }
         if (options.hasKey("destination")) {
-            Destination destination = new Destination()
+            Destination destination = new Destination();
             ReadableMap rm = options.getMap("destination");
             destination.setLatitude(rm.getDouble("latitude"));
             destination.setLongitude(rm.getDouble("longitude"));

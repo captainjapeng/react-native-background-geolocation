@@ -349,7 +349,7 @@ public class LocationService extends Service {
         sendClientMessage(msg);
         
         // Check if the location is inside the destination
-        if (config.hasDestination() && Destination.containsLocation(config.getDestination, location)) {
+        if (config.hasDestination() && Destination.containsLocation(config.getDestination(), location)) {
             stopSelf();
         }
     }

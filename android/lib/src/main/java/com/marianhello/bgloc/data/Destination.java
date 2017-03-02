@@ -36,7 +36,7 @@ public class Destination implements Parcelable {
     private Destination(Parcel in) {
         latitude = in.readDouble();
         longitude = in.readDouble();
-        radius = in.readFloat();
+        radius = in.readDouble();
     }
 
     @Override
@@ -48,7 +48,7 @@ public class Destination implements Parcelable {
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeDouble(latitude);
         dest.writeDouble(longitude);
-        dest.writeFloat(radius);
+        dest.writeDouble(radius);
     }
 
     public static final Parcelable.Creator<Destination> CREATOR
@@ -87,7 +87,6 @@ public class Destination implements Parcelable {
 
     public void setRadius(double radius) {
         this.radius = radius;
-        this.hasRadius = true;
     }
     
 
@@ -98,19 +97,21 @@ public class Destination implements Parcelable {
      * @param destination  The new Destination that you want to evaluate
      * @param location  The new Location that you want to evaluate
      */
-    public static double containsLocation(Destination destination, BackgroundLocation location) {
-      double R = 6371000.0;
-      double x = (location.getLongitude() - destination.getLongitude()) * Math.cos((destination.getLatitude() + location.getLatitude()) / 2);
-      double y = (location.getLatitude() - destination.getLatitude());
-      return Math.sqrt(x*x + y*y) * R;
+    public static boolean containsLocation(Destination destination, BackgroundLocation location) {
+        double R = 6371000.0;
+        double x = (location.getLongitude() - destination.getLongitude()) * Math.cos((destination.getLatitude() + location.getLatitude()) / 2);
+        double y = (location.getLatitude() - destination.getLatitude());
+        double d = Math.sqrt(x*x + y*y) * R;
+        
+        return d <= destination.getRadius();
     }
 
     @Override
     public String toString () {
         StringBuilder s = new StringBuilder();
-        s.append("Destination[").append(provider);
+        s.append("Destination[");
         s.append(String.format(" %.6f,%.6f", latitude, longitude));
-        if (hasRadius) s.append(" radius=").append(radius);
+        s.append(" radius=").append(radius);
         s.append("]");
 
         return s.toString();
