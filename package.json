@@ -21,7 +21,7 @@
     "react-native",
     "react-component",
     "android",
-    "destination"
+    "destination",
     "ios"
   ],
   "author": "Marian Hello",
