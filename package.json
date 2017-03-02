@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/mauron85/react-native-background-geolocation.git"
+    "url": "git+https://github.com/captainjapeng/react-native-background-geolocation.git"
   },
   "keywords": [
     "gps",
@@ -27,9 +27,9 @@
   "author": "Marian Hello",
   "license": "Apache-2.0",
   "bugs": {
-    "url": "https://github.com/mauron85/react-native-background-geolocation/issues"
+    "url": "https://github.com/captainjapeng/react-native-background-geolocation/issues"
   },
-  "homepage": "https://github.com/mauron85/react-native-background-geolocation#readme",
+  "homepage": "https://github.com/captainjapeng/react-native-background-geolocation#readme",
   "peerDependencies": {
     "react": ">=15.3.0",
     "react-native": ">=0.33.0"
