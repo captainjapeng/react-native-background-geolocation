@@ -2,6 +2,7 @@ package com.marianhello.react;
 
 import android.app.Activity;
 import android.app.Application;
+import android.app.ActivityManager;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
@@ -49,6 +50,8 @@ import java.util.Iterator;
 import java.util.Map;
 
 import javax.annotation.Nullable;
+
+import static android.content.Context.ACTIVITY_SERVICE;
 
 public class BackgroundGeolocationModule extends ReactContextBaseJavaModule implements LifecycleEventListener {
 
@@ -433,6 +436,21 @@ public class BackgroundGeolocationModule extends ReactContextBaseJavaModule impl
         }
 
         success.invoke(logEntriesArray);
+    }
+
+    /*
+     *  Origin: https://gist.github.com/kevinmcmahon/2988931
+     */
+    @ReactMethod
+    public void isRunning(Callback success) {
+      	ActivityManager manager = (ActivityManager) getApplication().getSystemService(ACTIVITY_SERVICE);
+      	for (ActivityManager.RunningServiceInfo service : manager.getRunningServices(Integer.MAX_VALUE)){
+        		if("com.marianhello.bgloc.LocationService".equals(service.service.getClassName())) {
+                success.invoke(true);
+        		}
+      	}
+
+        success.invoke(false);
     }
 
     private void sendEvent(ReactContext reactContext, String eventName, @Nullable WritableMap params) {

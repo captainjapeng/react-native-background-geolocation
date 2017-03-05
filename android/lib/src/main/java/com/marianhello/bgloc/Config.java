@@ -383,7 +383,7 @@ public class Config implements Parcelable
                 .append(" syncThreshold=").append(getSyncThreshold())
                 .append(" httpHeaders=").append(getHttpHeaders().toString())
                 .append(" maxLocations=").append(getMaxLocations())
-                .append(" destination=").append(getDestination() != null ? getDesiredAccuracy.toString() : "")
+                .append(" destination=").append(getDestination() != null ? getDesiredAccuracy().toString() : "")
                 .append("]")
                 .toString();
     }

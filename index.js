@@ -104,12 +104,17 @@ var BackgroundGeolocation = {
     errorFn = errorFn || emptyFn;
     RNBackgroundGeolocation.getConfig(successFn, errorFn);
   },
-  
+
   getLogEntries: function(limit, successFn, errorFn) {
     successFn = successFn || emptyFn;
     errorFn = errorFn || emptyFn;
     RNBackgroundGeolocation.getLogEntries(limit, successFn, errorFn);
   },
+
+  isRunning: function(successFn) {
+    successFn = successFn || emptyFn;
+    RNBackgroundGeolocation.isRunning(successFn);
+  }
 
   on: function(event, callbackFn) {
     if (typeof callbackFn !== 'function') {
